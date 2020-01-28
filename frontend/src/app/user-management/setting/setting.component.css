@@ -1,0 +1,48 @@
+.settingPage{
+    background-color: white;
+    height: 100vh;
+}
+
+
+
+.leftPane {
+    background-color: rgba(0,0,0,0.7);
+    height: 100vh;
+    width: 25vw;
+    float: left;
+
+}
+
+
+.rightPane{
+    background-color: whitesmoke;
+    height: 100vh;
+    float: right;
+}
+
+#userImage{
+    height: 15vh;
+    padding-bottom: 3vh;
+    
+    /* margin-top: 13vh;
+    margin-left: 10vw; */
+}
+
+
+.taskOptions > ul > li {
+    list-style: none;
+    margin: 20px;
+    padding: 10px;
+    color: wheat;
+    cursor: pointer;
+
+}
+
+.taskOptions > ul > li > a {
+ font-style: none;
+}
+
+.taskOptions > ul :hover {
+    color: wheat;
+    background-color: blue;
+}

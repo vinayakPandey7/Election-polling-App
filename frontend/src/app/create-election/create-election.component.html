@@ -1,0 +1,115 @@
+<app-header></app-header>
+<section >
+
+
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">Create new Poll</div>
+        <div class="card-body">
+          <h5 class="card-title">Create new Pol</h5>
+          
+    
+          <!-- create poll form -->
+          <form [formGroup]="createElectionForm" (ngSubmit)="saveElectionForm(createElectionForm.value)" ngNativeValidate >
+          
+              <!-- firstname -->
+              <div id="userInput">
+                <label >Organisation Name </label>
+                  <input class="form-control" formControlName="OrganisationName" type="text" required id="organisationName">
+                  <button class="btn btn-primary" (click)="checkAvailability()" > check Availability </button>
+              </div>
+          
+              <div id="userInput">
+                <label >Parties </label>
+                  <input class="form-control" formControlName="parties" type="text"  required >
+                  <button (click)="openPartyForm(partyTemplate)" >Add Party</button>
+              </div>
+              
+              <!-- <div id="userInput">
+                <label >Election Start </label>
+                  <input class="form-control" formControlName="electionEndDateTime" type="text"   >
+              </div>
+      
+              
+              <div id="userInput">
+                <label >Election End </label>
+                  <input class="form-control" formControlName="username" type="text" >
+              </div> -->
+      
+           
+               <!-- email -->
+               <div id="userInput">
+                <label >Email </label>
+                  <input class="form-control" formControlName="email" type="text" required >
+              </div>
+      
+              <button  class="btn btn-outline-success" id="submitBtn"> Save </button>
+              <button  class="btn btn-outline-lite" id="submitBtn" (click)="createElectionForm.reset()"> Reset </button>
+          </form> 
+          <!-- /create poll form -->
+
+        </div>
+      </div>
+
+
+      <!-- modal => new party -->
+      <ng-template #partyTemplate>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Add Party</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+
+          <form [formGroup]="partyForm" (ngSubmit)="savePartyForm(partyForm.value)" ngNativeValidate >
+    
+            <div >
+              <label >Organisation name </label>
+                <input class="form-control" formControlName="organisationName" type="text"  disabled>
+            </div>
+
+            <!-- firstname -->
+            <div >
+              <label >Party name </label>
+                <input class="form-control" formControlName="partyName" type="text"  required >
+            </div>
+        
+            <!-- lastname -->
+            <div >
+              <label >Founder's name </label>
+                <input class="form-control" formControlName="founderName" type="text"  required >
+            </div>
+
+            <!-- username -->
+            <div >
+              <label >registered on </label>
+                <input class="form-control" formControlName="registeredOn" type="text"  required>
+            </div>
+
+          <!-- address -->
+            <div id="userInput">
+              <label >Address </label>
+              <input  class="form-control" formControlName="address" type="text"  id="userInput" required >
+            </div>
+
+          <!-- email -->
+          <div id="userInput">
+            <label >Email </label>
+              <input class="form-control" formControlName="partyEmail" type="text" id="userInput" required >
+          </div>
+
+          <!-- contact no -->
+          <div id="userInput">
+            <label >contact no. </label>
+              <input class="form-control" formControlName="contactNo" type="text" id="userInput" required >
+          </div>
+
+            <button  class="btn btn-outline-success" id="submitBtn"> Save </button>
+            <button (click)="modalRef.hide()" class="btn btn-outline-secondary" id="submitBtn"> Cancel </button>
+        </form>         
+        </div>
+      </ng-template>
+       <!-- /modal => new party -->
+
+
+</section>

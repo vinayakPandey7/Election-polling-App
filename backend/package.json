@@ -1,0 +1,35 @@
+{
+  "name": "login_app",
+  "version": "1.0.0",
+  "description": "this is the basic version for learning github.",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon",
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/vinayakpandey/login_app.git"
+  },
+  "keywords": [
+    "login",
+    "app"
+  ],
+  "author": "vinayak pandey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/vinayakpandey/login_app/issues"
+  },
+  "homepage": "https://gitlab.com/vinayakpandey/login_app#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.12",
+    "update": "^0.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}

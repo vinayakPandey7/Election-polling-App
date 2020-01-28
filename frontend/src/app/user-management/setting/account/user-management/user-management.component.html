@@ -1,0 +1,157 @@
+
+
+<section class="mainContainer">
+
+  <section class="search">
+    <!-- <input class="searchInput" (keyup)="filterDatatable($event)"> -->
+  </section>
+
+  <input type="text"  placeholder="Search user" (keyup)='filterDatatable($event)'>
+
+  <section class="userTable">
+    <ngx-datatable
+        class="material striped scroll-vertical"
+        [rows]="rows"
+        [loadingIndicator]="loadingIndicator"
+        [columns]="columns"
+        [columnMode]="ColumnMode.force"
+        headerHeight="50"
+        footerHeight="50"
+        rowHeight="auto"
+        [reorderable]="reorderable"
+        
+      >
+      
+      <ngx-datatable-column name="Username" prop="username" [width]="150"></ngx-datatable-column>
+      <ngx-datatable-column name="Firstname" prop="firstname" [width]="100"></ngx-datatable-column>
+      <ngx-datatable-column name="Lastname" prop="lastname" [width]="100"></ngx-datatable-column>
+      <ngx-datatable-column name="Sex" prop="gender" [width]="100"></ngx-datatable-column>
+      <ngx-datatable-column name="Email" prop="email" [width]="250"></ngx-datatable-column>
+      <ngx-datatable-column name="Location" prop="location"></ngx-datatable-column>
+      <ngx-datatable-column name="Address" prop="address" [width]="300" ></ngx-datatable-column>
+      <ngx-datatable-column name="age" prop="age" [width]="60"></ngx-datatable-column>
+      <!-- <ngx-datatable-column name="Status" prop="status"></ngx-datatable-column> -->
+      <ngx-datatable-column name="Role" [width]="80" prop="role">
+        <ng-template let-value="value" let-row="row"  ngx-datatable-cell-template>
+          <span>
+            {{value == 3 ? 'Voter' : 'Sub Admin'}}
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <!-- voted or not -->
+      <ngx-datatable-column name="Voted" prop="voted" [width]="60">
+        <ng-template let-value="value" let-row="row"  ngx-datatable-cell-template>
+          <span>
+            {{row.voted == false ? 'No' : 'Yes'}}
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+      <!-- /voted or not -->
+
+      <!-- edit button -->
+      <ngx-datatable-column name="Edit User" [width]="90">
+        <ng-template let-value="value" let-row="row"  ngx-datatable-cell-template>
+          <span>
+            <button tooltip="Edit {{row.firstname}}" [adaptivePosition]="false" style="cursor: pointer; border: none;background: none;" (click)="openModal(template,row)"><i class="fa fa-edit"></i></button >
+            <!-- <button style="background-color:blue;height:15px;" class="btn" (click)='onSelectBlue(value)'><i class="rb-ic rb-ic-add-frame"></i></button> -->
+          </span>
+        </ng-template>
+      <!-- /edit button -->
+
+      <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Edit User</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+
+          <form [formGroup]="userModalForm" (ngSubmit)="saveUserDetail(userModalForm.value)" ngNativeValidate >
+    
+            <!-- firstname -->
+            <div id="userInput">
+              <label >Firstname </label>
+                <input class="form-control" formControlName="firstname" type="text"  id="userInput" >
+            </div>
+        
+            <!-- lastname -->
+            <div id="userInput">
+              <label >Lastname </label>
+                <input class="form-control" formControlName="lastname" type="text"  id="userInput" >
+            </div>
+
+            <!-- username -->
+            <div id="userInput">
+              <label >Username </label>
+                <input class="form-control" formControlName="username" type="text"  id="userInput" disabled>
+            </div>
+
+
+            <!-- sex -->
+            <div id="userInput">
+              <label >Gender <span class="caret"></span></label>
+                <select formControlName="gender" class="form-control" style="cursor: pointer;">
+                    <option value =""  >Choose your Gender</option>
+                    <option value ="male" >Male</option>
+                    <option value = "female" >Female</option  >
+                </select> 
+            </div>
+
+            <!-- age -->
+            <div id="userInput">
+              <label >Age </label>
+                <input class="form-control" formControlName="age" type="text" id="userInput" >
+            </div>
+
+            <!-- location -->
+            <div id="userInput">
+              <label >Location </label>
+                <input class="form-control" formControlName="location" type="text" id="userInput" >
+            </div>
+            
+             <!-- email -->
+             <div id="userInput">
+              <label >Email </label>
+                <input class="form-control" formControlName="email" type="text" id="userInput" disabled >
+            </div>
+
+
+
+            <!-- role -->
+            <div id="userInput">
+              <label> Role</label>
+              <input class="form-control" formControlName="role" type="text"  id="userInput" disabled>
+          </div>
+
+          <!-- address -->
+            <div id="userInput">
+              <label >Address </label>
+              <input  class="form-control" formControlName="address" type="text"  id="userInput" >
+            </div>
+
+            <button  class="btn btn-outline-success" id="submitBtn"> Save </button>
+            <button (click)="modalRef.hide()" class="btn btn-outline-secondary" id="submitBtn"> Cancel </button>
+        </form>         
+        </div>
+      </ng-template>
+
+
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Delete User" [width]="50" >
+        <ng-template let-value="value" let-row="row"  ngx-datatable-cell-template>
+          <span>
+            <button  tooltip="Delete {{row.firstname}}" [adaptivePosition]="false" style="cursor: pointer; border: none;background: none;" (click)='removeUser(row._id)'><i class="fa fa-remove"></i></button >
+            <!-- <button style="background-color:blue;height:15px;" class="btn" (click)='onSelectBlue(value)'><i class="rb-ic rb-ic-add-frame"></i></button> -->
+          </span>
+        </ng-template>
+       
+      </ngx-datatable-column>
+    </ngx-datatable
+     >
+  </section>
+</section>
+
+

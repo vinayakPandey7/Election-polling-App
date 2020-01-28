@@ -1,0 +1,54 @@
+<section >
+    <section>
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)" ngNativeValidate >
+    
+            <!-- firstname -->
+            <div id="userInput">
+                <input formControlName="firstname" type="text" placeholder="Firstname" id="userInput" required>
+            </div>
+        
+            <!-- lastname -->
+            <div id="userInput">
+                <input formControlName="lastname" type="text" placeholder="Lastname" id="userInput" required>
+            </div>
+
+            <!-- sex -->
+            <div id="userInput">
+                <select formControlName="gender" required>
+                    <option value ="null" disabled>Choose your Gender</option>
+                    <option value ="male" >Male</option>
+                    <option value = "female" >Female</option  >
+                </select> 
+            </div>
+
+            <!-- age -->
+            <div id="userInput">
+                <input formControlName="age" type="text" placeholder="Age" id="userInput" required>
+            </div>
+
+            <!-- location -->
+            <div id="userInput">
+                <input formControlName="location" type="text" placeholder="Location" id="userInput" required>
+            </div>
+            
+             <!-- email -->
+             <div id="userInput">
+                <input formControlName="email" type="text" placeholder="Email" id="userInput" required>
+            </div>
+
+            <!-- username -->
+            <div id="userInput">
+                <input formControlName="username" type="text" placeholder="Username" id="userInput" required>
+            </div>
+
+            <!-- password -->
+            <div id="userInput">
+                <input formControlName="password" type="password" placeholder="Password" id="userInput" required>
+            </div>
+
+
+
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+    </section>
+</section>

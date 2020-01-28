@@ -1,0 +1,66 @@
+.login{
+    display: flex;
+    /* position: absolute; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Kaushan Script', cursive;
+
+}
+video {
+    /*  making the video fullscreen  */
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+
+    /* z-index: -100; */
+  }
+
+
+#formSection{
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 30vh;
+    width: 33rem;
+    height: 38vh;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.card-header{
+    color: white;
+    font-size: 35px;
+}
+
+#userInput{
+    padding: 2vh;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    width: 85%;
+    margin-left: 3vh;
+}
+
+#submitBtn{
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.1);
+    color: ghostwhite;
+    border: none;
+
+}
+
+#submitBtn:focus{
+    outline: none;
+}
+
+
+input:focus{
+    outline: none;
+}

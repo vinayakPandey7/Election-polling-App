@@ -1,0 +1,87 @@
+<!-- <section class="settingPage">
+    <section class="leftPane" > 
+
+       
+        <section class="userDetail" style="color: whitesmoke ;text-align: center;margin-top: 10vh;padding-bottom: 2vh;">
+            
+            <div >
+                <img src="../../../assets/images/user.png" id="userImage" >
+                <div >
+                        {{userDetails.firstname}} {{userDetails.lastname}} 
+                </div>
+            </div>
+
+        </section>
+            
+        <section class="taskOptions">
+            <div>
+                
+            </div>
+
+            <div>
+               username: {{userDetails.username}}
+            </div>
+        </section>
+        
+        
+        
+        
+        
+     </section> 
+
+    <section class="right-Pane">
+            <app-account [userDetail]="userDetails"></app-account>
+    </section>
+
+    <div>
+        <app-user-management></app-user-management>
+    </div>
+</section> -->
+<app-header></app-header>
+<section class="settingPage">
+    <section class="leftPane" > 
+
+        <!-- userDetail -->
+        <section class="userDetail" style="color: whitesmoke ;text-align: center;margin-top: 10vh;padding-bottom: 2vh;">
+            
+            <div >
+                <img src="../../../assets/images/user.png" id="userImage" >
+                <div >
+                       Admin {{userDetails.firstname}} {{userDetails.lastname}} 
+                </div>
+            </div>
+
+        </section>
+            
+        <section class="taskOptions">
+           
+            <ul >
+                <li (click)="changeOption('profile')">  Admin Profile</li >
+                <li  (click)="changeOption('settings')">Settings</li>
+                <li (click)="changeOption('user-management')">User Management</li>
+                <li (click)="changeOption('app-detail')">Application detail</li>
+            </ul>
+
+        </section>
+        
+        
+        
+        
+        
+     </section> 
+
+    <section class="right-Pane">
+         <div >
+            <div *ngIf="activeComponent == 'profile'"><app-account [userDetail]="userDetails"></app-account></div>
+            <div *ngIf="activeComponent == 'settings'">settings component</div>
+            <div *ngIf="activeComponent == 'user-management'"><app-user-management></app-user-management></div>
+            <div *ngIf="activeComponent == 'app-detail'">app-detail</div>
+        </div>
+      
+            <!-- <app-account [userDetail]="userDetails"></app-account> -->
+    </section>
+
+    <!-- <div>
+        <app-user-management></app-user-management>
+    </div> -->
+</section>

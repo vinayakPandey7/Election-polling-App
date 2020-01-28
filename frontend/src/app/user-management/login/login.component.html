@@ -1,0 +1,34 @@
+
+<div class="login" style="margin: 0px!important;">
+
+    <section id="videoSection">
+        <video autoplay muted loop id="myVideo">
+            <source src="../../../assets/video/myVideo.mp4" type="video/mp4">
+                <!-- ../../../assets/video/myVideo.mp4 -->
+           
+          </video>
+        </section>
+    
+    
+    <section id="formSection">
+        <div class="card-header">
+            Login
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" ngNativeValidate >
+    
+            <!-- username -->
+            <div id="userInput">
+                <input formControlName="username" type="text" placeholder="Username" id="userInput">
+            </div>
+        
+            <!-- password -->
+            <div id="userInput">
+                <input formControlName="password" type="password" placeholder="Password" id="userInput">
+            </div>
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+    </section>
+
+</div>
+
+

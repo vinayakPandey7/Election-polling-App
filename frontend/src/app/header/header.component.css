@@ -1,0 +1,19 @@
+.themeColor {
+    background-color: blue;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    
+ }
+
+ .navbar ul > li{
+    padding: 10px;
+    
+ }
+
+ .navbar ul :hover {
+     background-color: red;
+     cursor: pointer;
+ }
