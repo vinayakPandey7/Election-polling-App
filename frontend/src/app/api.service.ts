@@ -29,7 +29,7 @@ export class ApiService {
    }
 
    login(link,userData){
-    return this.http.post(this.URL+link,userData);
+    return this.http.post<any>(this.URL+link,userData)
    }
 
    postData(link,userData){

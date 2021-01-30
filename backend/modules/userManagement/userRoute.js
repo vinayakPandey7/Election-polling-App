@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const ctrl = require('./userController');
+const auth = require('../../middleware/auth')
 
-router.get('/all-user',ctrl.getAllUser);                    // get all user from database
+router.get('/all-user',auth,ctrl.getAllUser);                    // get all user from database
 router.post('/login',ctrl.login);                           // get login from database
+router.get('/me',auth,ctrl.loggedUserDetail);   // get login from database
+
 router.post('/add-user',ctrl.addUser);                      // add new suer in database
 router.put('/edit-user',ctrl.editUser)
 router.delete('/delete-user',ctrl.removeUser);              // delete user from database

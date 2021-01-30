@@ -37,10 +37,11 @@ export class LoginComponent implements OnInit {
     .subscribe((res:any)=> {
       
       if (res.success == true) {
-        this.apiService.loggedIn = true;
+        // this.apiService.loggedIn = true;
         let tempUserDetail = res.userDetail;
         this.apiService.userDetails.a = 'avc'
-        localStorage.setItem('userDetail',JSON.stringify(tempUserDetail))
+        localStorage.setItem('userDetail',JSON.stringify(tempUserDetail));
+        localStorage.setItem('access_token', JSON.stringify(res.access_token));
         this.loginForm.reset();
         this.router.navigate(['/setting']);
         this.toastr.success("welcome "+tempUserDetail.firstname)

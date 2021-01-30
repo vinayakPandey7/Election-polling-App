@@ -47,7 +47,7 @@ import { CreateElectionComponent } from './create-election/create-election.compo
     ReactiveFormsModule,
     NgxDatatableModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 2000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),

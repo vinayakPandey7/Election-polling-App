@@ -33,13 +33,14 @@ export class AccountComponent implements OnInit {
 
   checkAvailability(){
     let username = $('#username').val();
-    this.ApiService.getAll('user/check-user-avail',username)
+    this.ApiService.getAll('api/user/check-user-avail',username)
     .subscribe((res:any)=> {
       if (res.success == true){
         $('#username').css('background-color','green');
-
+        this.toastr.success("username is available",username);
       } else {
-        $('#username').css('background-color','red')
+        $('#username').css('background-color','red');
+        this.toastr.info("username unavailable",username)
       }
     })
   }

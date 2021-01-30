@@ -12,9 +12,16 @@ const userSchema = new Schema({
     gender: {type: String, required:true},
     role: {type: String, default: '3'},
     address: {type: String},
-    voted: {type: Boolean, required: true, default: false}
+    voted: {type: Boolean, required: true, default: false},
+    avatar: {
+        type: String
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 })
 
 
 // role : 1-> superadmin, 2-> zonal-admin, 3-> voters
-module.exports = mongoose.model('User',userSchema);
+module.exports = mongoose.model('Users',userSchema);

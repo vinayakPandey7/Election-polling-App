@@ -2,10 +2,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+var cors = require('cors')
 
 
 // set up dependencies
 const app = express();
+app.use(cors()) // Use this after the variable declaration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -34,7 +36,7 @@ const partyRoute = require('./modules/electionManagement/partyManagement/partyRo
 
 app.use('/api/user', userRoute);
 app.use('/api/elect', electRoute);
-app.use('/api/party', partyRoute)
+app.use('/api/party', partyRoute);
 
 
 // setup port and run server

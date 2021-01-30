@@ -5,6 +5,8 @@ var jwt = require('jsonwebtoken');
 
 exports.newElec = (req,res) => {
 
+console.log('22222')
+    return
     new Election({
         organisation:req.body.organisation,
         email:req.body.email,

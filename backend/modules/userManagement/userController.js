@@ -2,9 +2,9 @@
 const User = require('./userModel');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-
+const config = require('../../config/env')
 exports.login = (req,res) => {
-
+    console.log(req.body)
     User.findOne({username:req.body.username})
     .exec()
     .then((user) => {
@@ -22,7 +22,7 @@ exports.login = (req,res) => {
                     email:user.email,
                 },
                 // process.env.JWT_KEY,
-                'secretkey', 
+                config.privateKey, 
                 { expiresIn:'1d' }
                 );
 
@@ -37,7 +37,7 @@ exports.login = (req,res) => {
                     success: true,
                     message: "user found in the record",
 		            userDetail: userDetail,
-                    token: token
+                    access_token: token
                 });
             }
             res.status(401).json({
@@ -54,6 +54,17 @@ exports.login = (req,res) => {
         });
     });
 
+}
+
+
+exports.loggedUserDetail = (req, res) => {
+
+    console.log("welcome")
+    return res.json({
+        id: req.user.userId,
+        name: req.user.username,
+        email: req.user.email
+    });
 }
 
 exports.addUser = (req,res) => {
@@ -217,7 +228,8 @@ exports.getAllUser = (req,res) => {
 }
 
 exports.checkUserAvail = (req,res)=>{
-    console.log(req.params.username)
+    // console.log(req.params.username)
+    console.log("99")
     User.find({username:req.params.username})
     .exec()
     .then((result)=>{
@@ -299,3 +311,4 @@ exports.removeSelectedUser = (req,res) => {
     })
 
 }
+
